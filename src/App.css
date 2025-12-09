@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(241, 155, 121)
+}
+
+.navbar {
+  background-color: blueviolet;
+}
+
+.sidebar {
+  background-color: darkblue;
+}
+
+.footer {
+  background-color: red;
+}
