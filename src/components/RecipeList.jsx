@@ -1,3 +1,6 @@
+import { Link } from "react-router";
+import RecipeCard from "./RecipeCard";
+import Sidebar from "./Sidebar";
 const recipesData = [
   {
     id: "9e7f0d61-aa6b-418a-b56a-6418d19e6e1d",
@@ -6,7 +9,7 @@ const recipesData = [
     image: "https://i.imgur.com/eTmWoAN.png",
     servings: 1,
   },
-  
+
   {
     id: "37e0b31d-63f4-4d42-9f4b-e9a0fc464d60",
     name: "Salad",
@@ -113,6 +116,14 @@ const recipesData = [
     servings: 1,
   },
   {
+    id: "37e0b31d-63f4-4d42-9f4b-e9a0fc464d80",
+    name: "Salad",
+    calories: 150,
+    image: "https://i.imgur.com/DupGBz5.jpg",
+    servings: 1,
+  },
+
+  {
     id: "62d8a0bc-1b77-4389-9e7b-2e00cace6a2e",
     name: "Yogurt",
     calories: 125,
@@ -122,11 +133,17 @@ const recipesData = [
 ];
 
 function RecipeList() {
-  return <div className="recipe-list">
-     {recipesData.map((name) => (
-          <recipesData key={name} />
+  return (
+    <>
+      <div className="recipe-list">
+        {recipesData.map((recipe) => (
+          <Link to= "/Recipes/:recipesId">
+          <RecipeCard key={recipe.id} recipe={recipe} />
+          </Link>
         ))}
-  </div>;
+      </div>    
+    </>
+  );
 }
 
 export default RecipeList;

@@ -1,15 +1,20 @@
-import RecipeList from "../components/RecipeList";
-
+import { Link, NavLink } from "react-router";
 function RecipeCard({ recipe }) {
-  const { id, name, calories, image, servings } = recipe;
+  const { name, calories, image, servings } = recipe;
+
   return (
+    <Link to="/RecipesPage">
     <div className="card">
-      <h1>{name}</h1>
+      <Link to ="/Favorites">
+      <button>🤍</button>
+      </Link>
+      <h2>{name}</h2>
       <img src={image} alt={name} />
-      <p>{id}</p>
-      <p>{calories}</p>
-      <p>{servings}</p>
+      <p>Calories: {calories}</p>
+      <p>Servings: {servings}</p>
+      
     </div>
+    </Link>
   );
 }
 

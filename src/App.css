@@ -2,20 +2,178 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background-color: rgb(241, 155, 121)
+  background-color: rgb(241, 155, 121);
+  color: #333;
+}
+
+h2 {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
 }
 
 .navbar {
   background-color: blueviolet;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  color: white;
+  font-size: 1.5rem;
+  justify-content: space-between;
+}
+
+.navbar img {
+  width: 100px;
+  object-fit: cover;
+  justify-content: flex-start;
+}
+
+.nav-links > a {
+  margin-left: 1em;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.master {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
 }
 
 .sidebar {
+  width: 20%;
+  max-height: 580px;
   background-color: darkblue;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.sidebar li {
+  list-style: none;
+  border-bottom: 3px solid red;
+  width: 100%;
+  font-size: 1.5em;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.sidebar li:hover {
+  font-size: 1.5em;
+  font-weight: bold;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #fdf3e7;
+}
+
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(3, 45vh);
+  justify-content: space-evenly;
+  gap: 20px;
+}
+
+.card {
+  margin: 10px;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card button {
+  display: flex;
+  scale: 1.8;
+  border: 1px solid rgba(128, 128, 128, 0.167);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  scale: 2.2;
+}
+
+.card button:active {
+  background-color: rgb(222, 64, 90);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 60%;
+  object-fit: contain;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: black;
 }
 
 .footer {
   background-color: red;
+  color: white;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .card img {
+    height: 120px;
+  }
 }
