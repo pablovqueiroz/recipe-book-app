@@ -1,8 +1,14 @@
-
 function SearchBar() {
   return (
-    <div>SearchBar</div>
-  )
+    <div className="SearchInputContainer">
+      <input
+        placeholder="Search.."
+        className="SearchInput"
+        name="text"
+        type="text"
+      />
+    </div>
+  );
 }
 
-export default SearchBar
+export default SearchBar;

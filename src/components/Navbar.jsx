@@ -9,8 +9,9 @@ function Navbar() {
       </Link>
       <div className="nav-links">
         <NavLink to= "/">Home</NavLink>
-        <NavLink to= "/AboutPage">About</NavLink>
+        <NavLink to= "/AboutPage">News</NavLink>
         <NavLink to= "/">Contact</NavLink> {/********************** ALTERAR LINK ***********/}
+        <NavLink to= "/login"><span>Sign up / Login</span></NavLink>
     </div>
     </div>
   );

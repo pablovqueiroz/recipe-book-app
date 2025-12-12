@@ -1,37 +1,44 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import RecipeList from "./components/RecipeList";
+import Home from "./pages/HomePage";
+import About from "./pages/AboutPage";
+import NotFound from "./pages/NotFoundPage";
+import Recipes from "./pages/RecipesDetailsPage";
+import Favorites from "./pages/Favorites";
+import Profile from "./pages/ProfilePage";
 import "./App.css";
-import { useState } from "react";
-import Home from "./assets/pages/HomePage";
-import About from "./assets/pages/AboutPage";
-import NotFound from "./assets/pages/NotFoundPage";
-import Recipes from "./assets/pages/RecipesDetailsPage";
-import Favorites from "./assets/pages/Favorites";
+import LoginPage from "./pages/LoginPage";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const [recipes, setRecipes] = useState(RecipeList);
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/sign-login";
   return (
     <>
-      <Navbar />
+    {!isLoginPage}
+    <Navbar />
       <div className="master">
+        <Sidebar />
         <main className="container">
-          <Sidebar/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/Favorites" element={<Favorites />} />
+            <Route path="/Profile" element={<Profile />} />
             <Route path="/About" element={<About />} />
             <Route path="/Recipes/:recipesId" element={<Recipes />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/login" element={<LoginPage />} />
             {/* <Route ---------------way to the recipes
             path="/pet-detail/:petId"
             element={<PetDetailPage petState={petState} />}
           /> */}
           </Routes>
           <section className="content">
-            <RecipeList />
+            <div></div>
           </section>
         </main>
       </div>
