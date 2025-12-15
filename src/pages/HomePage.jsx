@@ -1,12 +1,17 @@
 import SearchBar from "../components/SearchBar";
 import RecipeList from "../components/RecipeList";
-function HomePage() {
+import recipesData from "../recipesData";
+
+function HomePage({ recipes, favorites, onToggleFavorite }) {
   return (
     <>
-      
       <div className="container">
         <SearchBar />
-        <RecipeList />
+        <RecipeList
+          recipes={recipes}
+          favorites={favorites}
+          onToggleFavorite={onToggleFavorite}
+        />
       </div>
     </>
   );

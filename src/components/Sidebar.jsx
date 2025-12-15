@@ -6,13 +6,31 @@ function Sidebar() {
     <div className="sidebar">
       <div className="sidebar-content">
         <ul>
-          <li>Profile</li>
-          <li>Favorites</li>
-          <li>Contact</li>
-          <li>About Us</li>
-          <li>About Us</li>
-          <li>About Us</li>
-          <li>About Us</li>
+          <Link to="/">
+            <li>🏠 Home</li>
+          </Link>
+
+          <Link to="/ProfilePage">
+            <li>👤Profile</li>
+          </Link>
+
+          <Link to="/Favorites">
+            <li>⭐Favorites</li>
+          </Link>
+
+           <Link to="/Collaborate">
+            <li>📖 Collaborate</li>
+          </Link>
+
+          <Link to="/Contactpage">
+            <li>🗣️ Contact</li>
+          </Link>
+
+
+          <Link to="/About">
+            <li>💬About Us</li>
+          </Link>
+          
         </ul>
       </div>
     </div>

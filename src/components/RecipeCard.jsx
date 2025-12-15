@@ -1,24 +1,43 @@
 import { Link, NavLink } from "react-router";
-function RecipeCard({ recipe }) {
+import FavoriteButton from "./FavoriteButton";
+
+function RecipeCard({
+  recipe,
+  isFavorite,
+  onToggleFavorite,
+  onEditRecipe,
+  onDeleteRecipe,
+}) {
   const { name, calories, image, servings } = recipe;
 
+  const showActions = onEditRecipe || onDeleteRecipe;
+
   return (
-    
     <div className="card">
-      <Link to ="/Favorites">
-      <button>🤍</button>
-      </Link>
+      <FavoriteButton
+        isFavorite={isFavorite}
+        onClick={() => onToggleFavorite(recipe)}
+      />
       <h2>{name}</h2>
 
-      <Link to= "/Recipes/:recipesId">
-      <img src={image} alt={name} />
-       </Link>
-      
+      <Link to={`/recipes/${recipe.id}`} className="recipe-card-link">
+        <img src={image} alt={name} />
+      </Link>
+
       <p>Calories: {calories}</p>
       <p>Servings: {servings}</p>
-      
+
+      {showActions && (
+        <>
+          {onDeleteRecipe && (
+            <button onClick={() => onDeleteRecipe(recipe.id)}>🗑️</button>
+          )}
+          {onEditRecipe && (
+            <span><button onClick={() => onEditRecipe(recipe)}>✏️</button></span>
+          )}
+        </>
+      )}
     </div>
-    
   );
 }
 
