@@ -8,18 +8,29 @@ function CollaboratePage({
   onDeleteRecipe,
   favorites,
   onToggleFavorite,
+  onUpdateRecipe,
 }) {
+
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
   const handleEditClick = (recipe) => {
     setSelectedRecipe(recipe);
   };
 
+  const handleCancelEdit = () => {
+    setSelectedRecipe(null);
+  };
+
   return (
     <>
-      <AddRecipe onAddRecipe={onAddRecipe} initialRecipe={selectedRecipe}/>
+      <AddRecipe
+        onAddRecipe={onAddRecipe}
+        onUpdateRecipe={onUpdateRecipe}
+        initialRecipe={selectedRecipe}
+        onCancelEdit={handleCancelEdit}
+      />
 
-       <RecipeList
+      <RecipeList
         recipes={recipes}
         favorites={favorites}
         onToggleFavorite={onToggleFavorite}

@@ -18,12 +18,13 @@ import "./App.css";
 
 function App() {
   const location = useLocation();
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   const isLoginPage = location.pathname === "/sign-login";
   const shouldRenderPageContent = !isLoginPage;
+  //  const [recipes, setRecipes] = useState(recipesData);
+    // const [favorites, setFavorites] = useState([]);
 
   // favorites
 
@@ -103,6 +104,13 @@ function App() {
   };
 
   //update recipes
+  const handleUpdateRecipe = (updatedRecipe) => { 
+    setRecipes((remainingRecipes) => //alterei 'prev' para 'remainingRecipes'
+      remainingRecipes.map((recipe) => //alterei 'prev.map' para 'remainingRecipes.map'
+        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+      )
+    );
+  };
 
   // END OF javaScrip Land
   return (
@@ -166,6 +174,7 @@ function App() {
                 <CollaboratePage
                   recipes={recipes}
                   onAddRecipe={handleAddRecipe}
+                  onUpdateRecipe={handleUpdateRecipe}
                   onDeleteRecipe={handleDeleteRecipe}
                   favorites={favorites}
                   onToggleFavorite={toggleFavorite}
@@ -175,9 +184,6 @@ function App() {
             <Route path="/Contactpage" element={<ContactPage />} />
             <Route path="/About" element={<About />} />
           </Routes>
-          <section className="content">
-            <div></div>
-          </section>
         </main>
       </div>
 

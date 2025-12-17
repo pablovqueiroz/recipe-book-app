@@ -10,7 +10,7 @@ function RecipeCard({
 }) {
   const { name, calories, image, servings } = recipe;
 
-  const showActions = onEditRecipe || onDeleteRecipe;
+  const showActions = onEditRecipe && onDeleteRecipe;
 
   return (
     <div className="card">
@@ -29,11 +29,11 @@ function RecipeCard({
 
       {showActions && (
         <>
-          {onDeleteRecipe && (
-            <button onClick={() => onDeleteRecipe(recipe.id)}>🗑️</button>
-          )}
+          <button onClick={() => onDeleteRecipe(recipe.id)}>🗑️</button>
           {onEditRecipe && (
-            <span><button onClick={() => onEditRecipe(recipe)}>✏️</button></span>
+            <span>
+              <button onClick={() => onEditRecipe(recipe)}>✏️</button>
+            </span>
           )}
         </>
       )}

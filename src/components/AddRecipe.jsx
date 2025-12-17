@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function AddRecipe({ onAddRecipe }) {
+function AddRecipe({
+  onAddRecipe,
+  onUpdateRecipe,
+  initialRecipe,
+  onCancelEdit,
+}) {
   const [name, setName] = useState("");
   const [calories, setCalories] = useState(0);
   const [image, setImage] = useState("");
@@ -9,6 +14,19 @@ function AddRecipe({ onAddRecipe }) {
   const [type, setType] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+  const isEditing = !!initialRecipe;
+
+  useEffect(() => {
+    if (initialRecipe) {
+      setName(initialRecipe.name || "");
+      setCalories(initialRecipe.calories || 0);
+      setImage(initialRecipe.image || "");
+      setServings(initialRecipe.servings || 0);
+      setType(initialRecipe.type || "");
+      setIngredients(initialRecipe.ingredients || "");
+      setInstructions(initialRecipe.instructions || "");
+    }
+  }, [initialRecipe]);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -19,11 +37,11 @@ function AddRecipe({ onAddRecipe }) {
   };
 
   const handleCaloriesChange = (e) => {
-    setCalories(e.target.value);
+    setCalories(Number(e.target.value));
   };
 
   const handleServingsChange = (e) => {
-    setServings(e.target.value);
+    setServings(Number(e.target.value));
   };
 
   const handleTypeChange = (e) => {
@@ -41,8 +59,8 @@ function AddRecipe({ onAddRecipe }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    const newRecipe = {
-      id: uuidv4(),
+    const recipeData = {
+      id: initialRecipe?.id || uuidv4(),
       name,
       image,
       calories: Number(calories),
@@ -52,9 +70,13 @@ function AddRecipe({ onAddRecipe }) {
       instructions,
     };
 
-    onAddRecipe(newRecipe);
+    if (initialRecipe && onUpdateRecipe) {
+      onUpdateRecipe(recipeData);
+    } else {
+      onAddRecipe(recipeData);
+    }
 
-    console.log("Submitted", newRecipe);
+    console.log("Submitted", recipeData);
 
     setName("");
     setImage("");
@@ -63,13 +85,15 @@ function AddRecipe({ onAddRecipe }) {
     setType("-- None --");
     setIngredients("");
     setInstructions("");
+
+    if (onCancelEdit) onCancelEdit();
   };
 
   return (
     <div>
       {/* FORM */}
       <form onSubmit={handleFormSubmit} className="addRecipeForm">
-        <span>Add your Recipe</span>
+        <span>{isEditing ? "Edit Recipe" : "Add your Recipe"}</span>
         <div className="addRecipeInnerForm">
           <label>
             Name
@@ -156,7 +180,20 @@ function AddRecipe({ onAddRecipe }) {
           </label>
         </div>
         <div className="add-recipe-btn">
-          <button type="submit">Add Recipe</button>
+          {isEditing ? (
+            <>
+              <button
+                type="button"
+                onClick={onCancelEdit}
+                style={{ marginRight: "10px" }}
+              >
+                Cancel
+              </button>
+              <button type="submit">Update Recipe</button>
+            </>
+          ) : (
+            <button type="submit">Add Recipe</button>
+          )}
         </div>
       </form>
       {/* FORM END */}

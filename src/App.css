@@ -31,15 +31,19 @@ button {
   width: 100%;
 }
 
+.container div {
+  width: 100%;
+}
+
 .master {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .navbar {
   background-color: #ffffff;
-  height: 90px;
+  height: 10vh;
   display: flex;
   align-items: center;
   padding: 0 40px;
@@ -60,7 +64,6 @@ button {
   padding: 10px 20px;
   margin: 5px 0 5px 25px;
   font-weight: 700;
-  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s;
   box-shadow: 0 4px 8px rgba(255, 87, 34, 0.3);
 }
@@ -74,7 +77,6 @@ button {
   padding-top: 10px;
   width: 120px;
   object-fit: contain;
-  justify-content: flex-start;
 }
 
 .nav-links {
@@ -87,7 +89,6 @@ button {
   letter-spacing: 0.5px;
   font-size: 18px;
   color: #1f2c3f;
-  text-decoration: none;
   position: relative;
   padding-bottom: 5px;
   transition: color 0.3s;
@@ -128,21 +129,15 @@ button {
 
 .sidebar ul {
   list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 .sidebar li {
-  list-style: none;
   background-color: #f7f7f7;
   border-radius: 8px;
   padding: 12px 15px;
-  font-size: 1.1em;
-  text-align: left;
   color: #1f2c3f;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: all 0.3s ease;
   border-left: 5px solid transparent;
   margin-bottom: 5px;
   font-weight: 500;
@@ -168,12 +163,11 @@ button {
 .footer {
   background-color: #1f2c3f;
   color: #ffffff;
-  height: 70px;
+  height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
-  font-weight: 300;
+  font-weight: bold;
   letter-spacing: 0.5px;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -186,10 +180,8 @@ button {
 }
 
 .card {
-  text-wrap: prety;
   margin: 10px;
   height: 250px;
-  max-height: 250px;
   background-color: #fff;
   border-radius: 10px;
   padding: 15px;
@@ -204,13 +196,11 @@ button {
   scale: 1.8;
   border: 1px solid rgba(128, 128, 128, 0.167);
   border-radius: 10px;
-  cursor: pointer;
 }
 
-.card span button{
- margin-right: 20px;
+.card span button {
+  margin-right: 20px;
 }
-
 
 .card button:hover {
   scale: 2.2;
@@ -230,10 +220,11 @@ button {
   object-fit: contain;
   border-radius: 5px;
   margin-bottom: 10px;
+  transition: transform 0.2s;
 }
 
 .card img:hover {
-  scale: 1.3;
+  transform: scale(1.3);
 }
 
 .card h2 {
@@ -248,7 +239,6 @@ button {
 }
 
 .SearchInputContainer {
-  width: 95%;
   min-width: 210px;
   height: 50px;
   display: flex;
@@ -260,11 +250,8 @@ button {
     rgba(255, 87, 34, 0.1)
   );
   border-radius: 30px;
-  overflow: hidden;
-  cursor: pointer;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075);
-  margin: auto;
-  margin-block: 5px;
+  margin: 5px auto;
 }
 
 .SearchInput {
@@ -274,20 +261,16 @@ button {
   border: none;
   outline: none;
   caret-color: #ff5722;
-  background-color: rgb(255, 255, 255);
+  background-color: #fff;
   border-radius: 30px;
   padding-left: 15px;
   letter-spacing: 0.5px;
-  color: rgb(19, 19, 19);
   font-size: 13.4px;
 }
 
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   display: flex;
@@ -312,7 +295,6 @@ button {
   padding: 2rem;
   color: white;
   position: relative;
-  z-index: 1001;
 }
 
 .close-modal-button {
@@ -322,9 +304,7 @@ button {
   background: none;
   border: none;
   font-size: 1.8rem;
-  line-height: 1;
   color: white;
-  cursor: pointer;
   transition: color 0.2s, transform 0.2s;
 }
 
@@ -333,14 +313,9 @@ button {
   transform: scale(1.1);
 }
 
-.ModalSignInBtn {
-  cursor: pointer;
-}
-
 .title {
   text-align: center;
   font-size: 1.5rem;
-  line-height: 2rem;
   font-weight: 700;
 }
 
@@ -351,12 +326,11 @@ button {
 .input-group {
   margin-top: 0.25rem;
   font-size: 0.875rem;
-  line-height: 1.25rem;
 }
 
 .input-group label {
   display: block;
-  color: rgba(156, 163, 175, 1);
+  color: #9ca3af;
   margin-bottom: 4px;
 }
 
@@ -374,19 +348,22 @@ button {
   border-color: #ff5722;
 }
 
+.forgot,
+.signup {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
 .forgot {
   display: flex;
   justify-content: flex-end;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  color: rgba(156, 163, 175, 1);
   margin: 8px 0 14px 0;
 }
 
 .forgot a,
 .signup a {
   color: white;
-  text-decoration: none;
   font-size: 14px;
 }
 
@@ -402,16 +379,13 @@ button {
 }
 
 .sign {
-  display: block;
   width: 100%;
   background-color: #54624f;
   padding: 0.75rem;
-  text-align: center;
   color: white;
   border: none;
   border-radius: 0.375rem;
   font-weight: 600;
-  cursor: pointer;
   transition: background-color 0.2s;
 }
 
@@ -427,16 +401,14 @@ button {
 
 .line {
   height: 1px;
-  flex: 1 1 0%;
+  flex: 1;
   background-color: rgba(156, 163, 175, 0.3);
 }
 
 .social-message .message {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding: 0 0.75rem;
   font-size: 0.875rem;
-  line-height: 1.25rem;
-  color: rgba(156, 163, 175, 1);
+  color: #9ca3af;
 }
 
 .social-icons {
@@ -445,10 +417,9 @@ button {
 }
 
 .social-icons .icon {
-  border-radius: 0.125rem;
   padding: 0.75rem;
   border: none;
-  background-color: transparent;
+  background: transparent;
 }
 
 .social-icons .icon svg {
@@ -457,48 +428,25 @@ button {
   fill: #fff;
 }
 
-.signup {
-  text-align: center;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  color: rgba(156, 163, 175, 1);
-}
-
 .profileForm,
 .addRecipeForm,
-.contactForm
-{
+.contactForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 500px;
   max-width: 800px;
-  margin: 40px auto;
+  margin: 10px auto;
   padding: 30px;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.profileForm > span {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1f2c3f;
-  margin-bottom: 25px;
-  border-bottom: 3px solid #ff5722;
-  padding-bottom: 5px;
-}
-
-.addRecipeForm > span {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #1f2c3f;
-  margin-bottom: 25px;
-  border-bottom: 3px solid #ff5722;
-  padding-bottom: 5px;
-}
-
-.contactForm > span {
+.profileForm > span,
+.addRecipeForm > span,
+.contactForm > span,
+.about-us-title {
   font-size: 2rem;
   font-weight: bold;
   color: #1f2c3f;
@@ -509,8 +457,7 @@ button {
 
 .profileInnerForm,
 .addRecipeInnerForm,
-.contactInnerForm
-{
+.contactInnerForm {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -518,22 +465,8 @@ button {
   margin-bottom: 20px;
 }
 
-.profileInnerForm label {
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1f2c3f;
-}
-
-.addRecipeInnerForm label {
-  display: flex;
-  flex-direction: column;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1f2c3f;
-}
-
+.profileInnerForm label,
+.addRecipeInnerForm label,
 .contactInnerForm label {
   display: flex;
   flex-direction: column;
@@ -542,55 +475,29 @@ button {
   color: #1f2c3f;
 }
 
-.profileInnerForm input {
-  padding: 12px;
-  margin-top: 5px;
-  border: 1px solid #dcdcdc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  color: rgb(19, 19, 19);
-}
-
-.addRecipeInnerForm input {
-  padding: 12px;
-  margin-top: 5px;
-  border: 1px solid #dcdcdc;
-  border-radius: 6px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  color: rgb(19, 19, 19);
-}
-
+.profileInnerForm input,
+.addRecipeInnerForm input,
 .contactInnerForm input {
   padding: 12px;
   margin-top: 5px;
   border: 1px solid #dcdcdc;
   border-radius: 6px;
   font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   color: rgb(19, 19, 19);
 }
 
-.addRecipeInnerForm input:focus {
-  border-color: #54624f;
-  box-shadow: 0 0 0 3px rgba(84, 98, 79, 0.2);
-  outline: none;
-}
-
+.profileInnerForm input:focus,
+.addRecipeInnerForm input:focus,
 .contactInnerForm input:focus {
   border-color: #54624f;
   box-shadow: 0 0 0 3px rgba(84, 98, 79, 0.2);
   outline: none;
 }
 
-.profileInnerForm input:focus {
-  border-color: #54624f;
-  box-shadow: 0 0 0 3px rgba(84, 98, 79, 0.2);
-  outline: none;
-}
-
-.create-profile-btn {
+.create-profile-btn,
+.add-recipe-btn,
+.send-msg-btn {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -598,64 +505,28 @@ button {
   gap: 10px;
 }
 
-.create-profile-btn button,
-.create-profile-btn .go-to-profile-link {
-  padding: 12px 15px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  width: auto;
-  text-align: center;
-  text-decoration: none;
-  flex-grow: 1;
-}
-
-.create-profile-btn button,
-.create-profile-btn .go-to-profile-link {
-  padding: 12px 15px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  width: auto;
-  text-align: center;
-  text-decoration: none;
-  flex-grow: 1;
-}
-
-.add-recipe-btn button,
-.add-recipe-btn {
-  padding: 12px 15px;
-  border: none;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  width: auto;
-  text-align: center;
-  text-decoration: none;
-  flex-grow: 1;
-}
-
-.send-msg-btn button,
 .send-msg-btn {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-profile-btn button,
+.create-profile-btn .go-to-profile-link,
+.add-recipe-btn button,
+.send-msg-btn button {
   padding: 12px 15px;
   border: none;
   border-radius: 6px;
   font-size: 0.95rem;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
-  width: auto;
+  transition: all 0.3s ease;
   text-align: center;
-  text-decoration: none;
   flex-grow: 1;
+}
+
+.save-profile {
+  background-color: #ff5722;
+  color: white;
 }
 
 .save-profile-btn {
@@ -663,43 +534,44 @@ button {
   color: white;
 }
 
-.save-profile-link {
-  flex-grow: 1;
-}
-
 .save-profile-btn:hover {
   background-color: #e54d1f;
   transform: translateY(-2px);
 }
 
-.delete-profile-btn {
+.delete-profile-btn,
+.password-btn {
   background-color: #54624f;
   color: white;
 }
+.delete-profile button {
+  background-color: #ff5722;
+  color: white;
+}
 
-.delete-profile-btn:hover {
+.delete-profile-btn:hover,
+.password-btn:hover {
   background-color: #434f3e;
   transform: translateY(-2px);
 }
 
-.go-to-profile-link {
-  background-color: #f0f0f0;
-  color: #1f2c3f;
+.go-to-profile-link,
+.back-btn {
+  background-color: #ff5722;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.go-to-profile-link:hover {
-  background-color: #dcdcdc;
+.go-to-profile-link:hover,
+.back-btn:hover {
   transform: translateY(-2px);
 }
 
 .profile-page-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
   padding: 30px 20px;
   background-color: #fbf8f0;
 }
@@ -707,17 +579,15 @@ button {
 .profile-card {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  background-color: #ffffff;
+  text-align: center;
+  background-color: #fff;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   padding: 30px;
-  width: 100%;
-  max-width: 450px;
+  width: 70vh;
+  max-width: 600px;
   min-height: 200px;
-  text-align: center;
-  margin-top: 20px;
 }
 
 .profile-title {
@@ -727,11 +597,6 @@ button {
   margin-bottom: 25px;
   border-bottom: 3px solid #ff5722;
   padding-bottom: 5px;
-  display: inline-block;
-}
-
-.profile-image-section {
-  margin-bottom: 30px;
 }
 
 .profile-picture {
@@ -757,10 +622,11 @@ button {
 }
 
 .profile-details-section {
+  width: 100%;
   text-align: left;
-  margin-bottom: 30px;
   border-top: 1px solid #dcdcdc;
   padding-top: 20px;
+  margin-bottom: 30px;
 }
 
 .detail-item {
@@ -782,22 +648,19 @@ button {
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
-  margin-top: 20px;
 }
 
 .profile-action-btn {
   padding: 12px 20px;
-  border: none;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
   color: white;
-  transition: background-color 0.3s ease, transform 0.1s ease,
-    box-shadow 0.2s ease;
+  transition: all 0.3s ease;
   flex: 1 1 auto;
   max-width: 180px;
+  text-align: center;
+  background-color: #ff5722;
 }
 
 .profile-action-btn:hover {
@@ -809,33 +672,8 @@ button {
   background-color: #ff5722;
 }
 
-.edit-btn:hover {
-  background-color: #e54d1f;
-}
-
-.password-btn {
-  background-color: #54624f;
-}
-
-.password-btn:hover {
-  background-color: #434f3e;
-}
-
-.back-btn {
-  background-color: #dcdcdc;
-  color: #1f2c3f;
-}
-
-.back-btn:hover {
-  background-color: #c0c0c0;
-}
-
 .detail-container {
-  align-items: center;
-}
-
-.detail-container {
-  margin-top: 20px;
+  margin: 20px auto;
   max-width: 900px;
   padding: 20px;
   background-color: #ffffff;
@@ -848,17 +686,8 @@ button {
   display: inline-block;
   margin-bottom: 30px;
   color: #4caf50;
-  text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
-}
-
-.detail-container > .back-to-list-link:hover {
-  color: #388e3c;
-}
-
-.recipe-detail-container {
-  padding-top: 20px;
 }
 
 .recipe-detail-container h1 {
@@ -867,15 +696,13 @@ button {
   border-bottom: 3px solid #ff9800;
   padding-bottom: 10px;
   margin-bottom: 25px;
-  font-weight: 700;
 }
 
 .recipe-detail-container img {
   width: 100%;
   max-width: 650px;
-  height: auto;
   display: block;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 30px;
   border-radius: 8px;
   object-fit: cover;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
@@ -884,28 +711,11 @@ button {
 .recipe-detail-container > div {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   padding: 15px 0;
   margin-bottom: 30px;
   border: 1px solid #eee;
   border-radius: 8px;
   background-color: #fcfcfc;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.recipe-detail-container > div p {
-  font-size: 1.1em;
-  color: #555;
-  text-align: center;
-}
-
-.recipe-instructions {
-  text-align: justify;
-}
-
-.recipe-detail-container > div strong {
-  color: #ff9800;
-  margin-right: 5px;
 }
 
 .recipe-detail-container h2 {
@@ -919,28 +729,21 @@ button {
 
 .recipe-detail-container ul {
   list-style: none;
-  padding-left: 0;
 }
 
 .recipe-detail-container ul li {
   background-color: #f9f9f9;
-  padding: 10px 15px;
+  padding: 10px 15px 10px 25px;
   margin-bottom: 8px;
   border-radius: 5px;
-  font-size: 1em;
-  color: #444;
   position: relative;
-  padding-left: 25px;
 }
 
 .recipe-detail-container ul li::before {
   content: "•";
   color: #4caf50;
-  font-size: 1.2em;
   position: absolute;
   left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .recipe-detail-container p {
@@ -951,75 +754,63 @@ button {
   white-space: pre-wrap;
 }
 
+.about-us-p {
+  line-height: 1.8;
+  color: #1f2c3f;
+  font-size: 1.05rem;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+.about-us-p span {
+  color: #ff5722;
+  font-weight: 700;
+}
+
 .not-found-container {
   padding: 50px;
   text-align: center;
   color: #d32f2f;
   font-size: 1.5em;
-  line-height: 100px;
-}
-
-.not-found-container a {
-  color: black;
-  border: 1px solid #d32f2f38;
-  background-color: #d32f2f32;
-  border-radius: 5px;
-  padding: 20px;
-  margin: 5px;
 }
 
 .empty-list-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    width: 100%; 
-    min-height: 50vh;
-    padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 50vh;
+  padding: 50px 20px;
 }
 
 .empty-list {
-
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1F2C3F;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2c3f;
+  margin-bottom: 25px;
 }
 
 .empty-list-container a {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    background-color: #ff5722;
-    padding: 12px 25px;
-    border-radius: 50px; 
-    transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.empty-list-container a:hover {
-    background-color: #434f3e;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: #ff5722;
+  padding: 12px 25px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
 }
 
 .recipe-list:has(> *:not(.empty-list-container)) .empty-list-container {
-    display: none;
+  display: none;
 }
 
-.pagination button{
-  background-color: none;
+.pagination button {
+  background: none;
   border: none;
   scale: 1.3;
   margin: 5px;
 }
-
+/* 
 @media (max-width: 1024px) {
   .recipe-list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
   }
   .sidebar {
     width: 25%;
@@ -1028,9 +819,7 @@ button {
 
 @media (max-width: 768px) {
   .navbar {
-    font-size: 1.2rem;
     padding: 0 15px;
-    height: 70px;
   }
   .nav-links {
     display: none;
@@ -1040,43 +829,22 @@ button {
   }
   .sidebar {
     width: 98%;
-    max-height: none;
     margin: 10px auto;
-  }
-  .content {
-    padding: 5px;
+    max-height: none;
   }
   .recipe-list {
     grid-template-columns: 1fr;
-    gap: 15px;
-    width: 100%;
-  }
-  .card {
-    height: auto;
-    max-height: none;
   }
   .profileForm {
-    margin: 20px 10px;
+    min-width: unset;
+    width: 95%;
     padding: 20px;
   }
   .create-profile-btn {
     flex-direction: column;
   }
-  .create-profile-btn button,
-  .create-profile-btn .go-to-profile-link {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  .profile-card {
-    margin: 15px;
-    padding: 20px;
-  }
-  .profile-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
   .profile-action-btn {
     max-width: none;
     width: 100%;
   }
-}
+} */
