@@ -105,8 +105,8 @@ function App() {
 
   //update recipes
   const handleUpdateRecipe = (updatedRecipe) => { 
-    setRecipes((remainingRecipes) => //alterei 'prev' para 'remainingRecipes'
-      remainingRecipes.map((recipe) => //alterei 'prev.map' para 'remainingRecipes.map'
+    setRecipes((remainingRecipes) => 
+      remainingRecipes.map((recipe) => 
         recipe.id === updatedRecipe.id ? updatedRecipe : recipe
       )
     );
