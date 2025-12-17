@@ -1,11 +1,10 @@
 # RECIPE MANAGEMENT APP (I'm Hungry)
 
-
 ![App Logo](src/assets/images/LOGO.png)
 
 # Description
 
-Recipe Management App is a full-stack React + Vite single-page application (SPA) for comprehensive recipe management. Users can browse paginated recipe collections, perform full CRUD operations (Create, Read, Update, Delete), manage favorites, authenticate with persistent profiles, and navigate seamlessly across 12+ interconnected pages. 
+Recipe Management App is a full-stack React + Vite single-page application (SPA) for comprehensive recipe management. Users can browse paginated recipe collections, perform full CRUD operations (Create, Read, Update, Delete), manage favorites, authenticate with persistent profiles, and navigate seamlessly across 12+ interconnected pages.
 
 The architecture features **centralized global state management** in `App.jsx` with **props drilling** to child components, **React Router v6** for client-side routing, **localStorage persistence** for user data, and a **25+ recipe mock dataset** with consistent data structure. Responsive design ensures optimal experience across desktop, tablet, and mobile devices.
 
@@ -23,17 +22,17 @@ The architecture features **centralized global state management** in `App.jsx` w
 
 # Recipe Categories
 
-| Category       | Recipe Count | Examples                          |
-|----------------|--------------|-----------------------------------|
-| Pasta & Pizza  | 4            | Pepperoni Pizza, Meat Lasagna     |
-| Meat           | 4            | Pot Roast, Beef Hamburger         |
-| Fish           | 3            | Roasted Cod, Grilled Salmon       |
-| Asian          | 3            | Chicken Pad Thai, Spicy Curry     |
-| Mexican        | 1            | Chicken Fajitas                   |
-| Salad          | 1            | Caesar Salad                      |
-| Dessert        | 1            | Chocolate Cake                    |
-| Soup           | 1            | Red Lentil Soup                   |
-| Vegetarian     | 1            | Hearty Chili                      |
+| Category      | Recipe Count | Examples                      |
+| ------------- | ------------ | ----------------------------- |
+| Pasta & Pizza | 4            | Pepperoni Pizza, Meat Lasagna |
+| Meat          | 4            | Pot Roast, Beef Hamburger     |
+| Fish          | 3            | Roasted Cod, Grilled Salmon   |
+| Asian         | 3            | Chicken Pad Thai, Spicy Curry |
+| Mexican       | 1            | Chicken Fajitas               |
+| Salad         | 1            | Caesar Salad                  |
+| Dessert       | 1            | Chocolate Cake                |
+| Soup          | 1            | Red Lentil Soup               |
+| Vegetarian    | 1            | Hearty Chili                  |
 
 # Minimum Viable Product (MVP)
 
@@ -76,7 +75,6 @@ Post-MVP enhancements:
 
 main.jsx → BrowserRouter → App.jsx → Routes → Individual Pages
 
-
 ## Complete Props Flow
 
 App.jsx (Global State)
@@ -108,24 +106,28 @@ App.jsx (Global State)
 ### Core Methods (Passed as Props)
 
 #### `toggleFavorite(recipe)`
+
 setFavorites(prev => prev.some(r => r.id === recipe.id)
 ? prev.filter(r => r.id !== recipe.id)
 : [...prev, recipe]);
 
-
 #### `handleAddRecipe(newRecipe)`
+
 setRecipes(remainingRecipes => [newRecipe, ...remainingRecipes]); // Adds to top
 
 #### `handleDeleteRecipe(recipe_id)`
+
 setRecipes(remainingRecipes => prev.filter(recipe => recipe.id !== recipe_id));
 
 #### `handleLogin(username, password)`
+
 // Validates against stored profile
 return profile && (username === profile.username || username === profile.email);
 
 ## recipesData.js - Data Layer
 
 ### Recipe Schema
+
 {
 id: "uuid-v4-string",
 name: "Recipe Name",
@@ -137,19 +139,19 @@ ingredients: ["item1", "item2"], // Array[string]
 instructions: "Step by step..." // Multi-line string
 }
 
-
 ## RecipeList.jsx - Pagination Engine
 
 ### State & Logic
+
 const [currentPage, setCurrentPage] = useState(1);
 const ITEMS_PER_PAGE = 6;
-const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+const startIndex = (currentPage - 1) \* ITEMS_PER_PAGE;
 const recipesToShow = recipes.slice(startIndex, startIndex + ITEMS_PER_PAGE);
-
 
 ## AddRecipe.jsx - Form Factory
 
 ### Dual Mode Operation
+
 - **Create Mode**: `initialRecipe = null` → generates `uuidv4()`
 - **Edit Mode**: `initialRecipe` prop → pre-populates form
 - Single `handleFormSubmit` handles both via conditional logic
@@ -172,6 +174,7 @@ HomePage
 ## Navbar.jsx - Global Navigation
 
 **Responsibilities**:
+
 - Logo → Home (`/`)
 - NavLinks → `/profile`, `/favorites`, `/add-recipe`
 - Login button → triggers `openLoginModal()` from App
@@ -200,70 +203,78 @@ localStorage.getItem("profileData") → App.jsx useState → ProfilePage props
 - **Favorites Page**:
   ![Favorites Collection](src/assets/images/favorites-page.gif)
 
-  - **Collaborate Page**:
+- **Collaborate Page**:
   ![Add/Update/Delete a Recipe](src/assets/images/add-update-delete-recipe.png)
-
 
 # States and State Transitions
 
 ## Application States
 
 1. **Unauthenticated Home** (`/`)
+
    - Full recipe grid + login prompt in Navbar
    - Browse → Details → Back
 
 2. **Login Flow**
-Navbar Login → LoginPage Modal →
-(No Profile) CreateProfilePage →
-(Has Profile) ProfilePage
-
+   Navbar Login → LoginPage Modal →
+   (No Profile) CreateProfilePage →
+   (Has Profile) ProfilePage
 
 3. **Authenticated State**
-ProfilePage ↔ Home ↔ Favorites ↔ AddRecipe
+   ProfilePage ↔ Home ↔ Favorites ↔ AddRecipe
 
 4. **Recipe Deep Dive**
-Any RecipeCard → RecipesDetailsPage(/recipe/:id)
-
+   Any RecipeCard → RecipesDetailsPage(/recipe/:id)
 
 5. **Protected Routes**
-/profile, /favorites, /add-recipe
-(redirects unauthenticated users)
-
+   /profile, /favorites, /add-recipe
+   (redirects unauthenticated users)
 
 # Task - Development Roadmap
 
 ## Phase 1: Foundation (Complete)
+
 1. **Vite + Router Setup**
+
 - `npm create vite@latest --template react`
 - `npm i react-router-dom uuid`
 
 2. **Core Architecture**
+
 - App.jsx (Routes + Global State)
 - Master layout (Navbar/Sidebar/Footer)
 
 3. **Data Layer**
+
 - recipesData.js (25+ recipes)
 - Global state with persistence
 
 ## Phase 2: Core Features (Complete)
+
 4. **Recipe Browsing**
+
 - HomePage → RecipeList → RecipeCard chain
 - Pagination (6/page) + SearchBar
 
 5. **Authentication**
+
 - Login modal + CreateProfile + ProfilePage
 - localStorage persistence
 
 6. **CRUD Operations**
+
 - AddRecipe (create/edit modes)
 - Delete/Update in RecipeCard
 
 ## Phase 3: Polish (Complete)
+
 7. **Additional Pages**
+
 - FavoritesPage, About, Contact, Collaborate
 - RecipesDetailsPage, NotFoundPage
 
 8. **Responsive Design**
+
 - CSS Grid breakpoints
 - Mobile-first touch targets
 
