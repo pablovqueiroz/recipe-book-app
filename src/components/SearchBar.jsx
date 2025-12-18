@@ -1,4 +1,10 @@
-function SearchBar() {
+function SearchBar({ value = "", onChange }) {
+  const handleChange = (e) => {
+    const v = e.target.value;
+    console.log("SearchBar input:", v);
+    if (onChange) onChange(v);
+  };
+
   return (
     <div className="SearchInputContainer">
       <input
@@ -6,6 +12,8 @@ function SearchBar() {
         className="SearchInput"
         name="text"
         type="text"
+        value={value}
+        onChange={handleChange}
       />
     </div>
   );

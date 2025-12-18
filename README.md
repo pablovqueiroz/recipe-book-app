@@ -128,25 +128,25 @@ return profile && (username === profile.username || username === profile.email);
 
 ### Recipe Schema
 
-{
-id: "uuid-v4-string",
-name: "Recipe Name",
-calories: 400, // Number
-image: "https://url", // External CDN
-servings: 1, // Number
-type: "Pasta & Pizza", // Category filter
-ingredients: ["item1", "item2"], // Array[string]
-instructions: "Step by step..." // Multi-line string
-}
+- {
+- id: "uuid-v4-string",
+- name: "Recipe Name",
+- calories: 400, // Number
+- image: "https://url", // External CDN
+- servings: 1, // Number
+- type: "Pasta & Pizza", // Category filter
+- ingredients: ["item1", "item2"], // Array[string]
+- instructions: "Step by step..." // Multi-line string
+- }
 
 ## RecipeList.jsx - Pagination Engine
 
 ### State & Logic
 
-const [currentPage, setCurrentPage] = useState(1);
-const ITEMS_PER_PAGE = 6;
-const startIndex = (currentPage - 1) \* ITEMS_PER_PAGE;
-const recipesToShow = recipes.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+- const [currentPage, setCurrentPage] = useState(1);
+- const ITEMS_PER_PAGE = 6;
+- const startIndex = (currentPage - 1) \* ITEMS_PER_PAGE;
+- const recipesToShow = recipes.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
 ## AddRecipe.jsx - Form Factory
 
@@ -163,13 +163,13 @@ const recipesToShow = recipes.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 **Purpose**: Composes the primary recipe discovery experience
 
 **Children Chain**:
-HomePage
-├── SearchBar (local state filtering)
-└── RecipeList
-└── RecipeCard ×6 (paginated)
-├── FavoriteButton
-├── Link to Details
-└── Edit/Delete (if authorized)
+- HomePage
+- ├── SearchBar (local state filtering)
+- └── RecipeList
+- └── RecipeCard ×6 (paginated)
+- ├── FavoriteButton
+- ├── Link to Details
+- └── Edit/Delete (if authorized)
 
 ## Navbar.jsx - Global Navigation
 

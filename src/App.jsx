@@ -89,7 +89,31 @@ function App() {
 
   //add recipes
 
+  const [searchTerm, setSearchTerm] = useState("");
+  const handleSearchChange = (term) => {
+
+    console.log("handleSearchChange ->", term);
+    setSearchTerm(term);
+  };
+
   const [recipes, setRecipes] = useState(recipesData);
+
+  const filteredRecipes = (() => {
+    const query = searchTerm.trim().toLowerCase();
+    if (!query) return recipes;
+    return recipes.filter((recipe) => {
+      const name = (recipe.name || "").toLowerCase();
+      const type = (recipe.type || "").toLowerCase();
+      const ingredients = (recipe.ingredients || []).join(" ").toLowerCase();
+      const instructions = (recipe.instructions || "").toLowerCase();
+      return (
+        name.includes(query) ||
+        type.includes(query) ||
+        ingredients.includes(query) ||
+        instructions.includes(query)
+      );
+    });
+  })();
 
   const handleAddRecipe = (newRecipe) => {
     setRecipes((remainingRecipes) => [newRecipe, ...remainingRecipes]);
@@ -131,9 +155,11 @@ function App() {
               path="/"
               element={
                 <Home
-                  recipes={recipes}
+                  recipes={filteredRecipes}
                   favorites={favorites}
                   onToggleFavorite={toggleFavorite}
+                  searchTerm={searchTerm}
+                  onSearchChange={handleSearchChange}
                 />
               }
             />
