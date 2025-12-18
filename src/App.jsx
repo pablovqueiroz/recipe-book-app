@@ -89,32 +89,6 @@ function App() {
 
   //add recipes
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const handleSearchChange = (term) => {
-
-    console.log("handleSearchChange ->", term);
-    setSearchTerm(term);
-  };
-
-  const [recipes, setRecipes] = useState(recipesData);
-
-  const filteredRecipes = (() => {
-    const query = searchTerm.trim().toLowerCase();
-    if (!query) return recipes;
-    return recipes.filter((recipe) => {
-      const name = (recipe.name || "").toLowerCase();
-      const type = (recipe.type || "").toLowerCase();
-      const ingredients = (recipe.ingredients || []).join(" ").toLowerCase();
-      const instructions = (recipe.instructions || "").toLowerCase();
-      return (
-        name.includes(query) ||
-        type.includes(query) ||
-        ingredients.includes(query) ||
-        instructions.includes(query)
-      );
-    });
-  })();
-
   const handleAddRecipe = (newRecipe) => {
     setRecipes((remainingRecipes) => [newRecipe, ...remainingRecipes]);
   };
@@ -135,6 +109,36 @@ function App() {
       )
     );
   };
+
+
+    const [searchTerm, setSearchTerm] = useState("");
+  const handleSearchChange = (term) => {
+    console.log("handleSearchChange ->", term);
+    setSearchTerm(term);
+  };
+
+  
+  //searchbar
+
+  const [recipes, setRecipes] = useState(recipesData);
+
+  const filteredRecipes = (() => {
+    const query = searchTerm.trim().toLowerCase();
+    if (!query) return recipes;
+    return recipes.filter((recipe) => {
+      const name = (recipe.name || "").toLowerCase();// por nome
+      const type = (recipe.type || "").toLowerCase();// por tipo
+      const ingredients = (recipe.ingredients || []).join(" ").toLowerCase();//por ingredientes
+      const instructions = (recipe.instructions || "").toLowerCase();// por instrucoes
+      return (
+        name.includes(query) ||
+        type.includes(query) ||
+        ingredients.includes(query) ||
+        instructions.includes(query)
+      );
+    });
+  })();
+
 
   // END OF javaScrip Land
   return (
